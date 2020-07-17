@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.durgs.dao.supplierMapper">
+  <resultMap id="BaseResultMap" type="com.durgs.entity.supplier">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="company_name" jdbcType="VARCHAR" property="companyName" />
+    <result column="licence" jdbcType="VARCHAR" property="licence" />
+    <result column="company_status" jdbcType="VARCHAR" property="companyStatus" />
+    <result column="licence_returntime" jdbcType="VARCHAR" property="licenceReturntime" />
+    <result column="company_link" jdbcType="VARCHAR" property="companyLink" />
+    <result column="company_phone" jdbcType="VARCHAR" property="companyPhone" />
+    <result column="scope" jdbcType="VARCHAR" property="scope" />
+    <result column="registered_address" jdbcType="VARCHAR" property="registeredAddress" />
+    <result column="link_address" jdbcType="VARCHAR" property="linkAddress" />
+    <result column="postalcode" jdbcType="VARCHAR" property="postalcode" />
+    <result column="totalassets" jdbcType="VARCHAR" property="totalassets" />
+    <result column="enterprisefax" jdbcType="VARCHAR" property="enterprisefax" />
+    <result column="legarname" jdbcType="VARCHAR" property="legarname" />
+    <result column="legaridentitycode" jdbcType="VARCHAR" property="legaridentitycode" />
+    <result column="registerenterprise" jdbcType="INTEGER" property="registerenterprise" />
+    <result column="saleprise" jdbcType="REAL" property="saleprise" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, company_name, licence, company_status, licence_returntime, company_link, company_phone, 
+    scope, registered_address, link_address, postalcode, totalassets, enterprisefax, 
+    legarname, legaridentitycode, registerenterprise, saleprise
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from supplier
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from supplier
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.durgs.entity.supplier">
+    insert into supplier (id, company_name, licence, 
+      company_status, licence_returntime, company_link, 
+      company_phone, scope, registered_address, 
+      link_address, postalcode, totalassets, 
+      enterprisefax, legarname, legaridentitycode, 
+      registerenterprise, saleprise)
+    values (#{id,jdbcType=INTEGER}, #{companyName,jdbcType=VARCHAR}, #{licence,jdbcType=VARCHAR}, 
+      #{companyStatus,jdbcType=VARCHAR}, #{licenceReturntime,jdbcType=VARCHAR}, #{companyLink,jdbcType=VARCHAR}, 
+      #{companyPhone,jdbcType=VARCHAR}, #{scope,jdbcType=VARCHAR}, #{registeredAddress,jdbcType=VARCHAR}, 
+      #{linkAddress,jdbcType=VARCHAR}, #{postalcode,jdbcType=VARCHAR}, #{totalassets,jdbcType=VARCHAR}, 
+      #{enterprisefax,jdbcType=VARCHAR}, #{legarname,jdbcType=VARCHAR}, #{legaridentitycode,jdbcType=VARCHAR}, 
+      #{registerenterprise,jdbcType=INTEGER}, #{saleprise,jdbcType=REAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.durgs.entity.supplier">
+    insert into supplier
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="companyName != null">
+        company_name,
+      </if>
+      <if test="licence != null">
+        licence,
+      </if>
+      <if test="companyStatus != null">
+        company_status,
+      </if>
+      <if test="licenceReturntime != null">
+        licence_returntime,
+      </if>
+      <if test="companyLink != null">
+        company_link,
+      </if>
+      <if test="companyPhone != null">
+        company_phone,
+      </if>
+      <if test="scope != null">
+        scope,
+      </if>
+      <if test="registeredAddress != null">
+        registered_address,
+      </if>
+      <if test="linkAddress != null">
+        link_address,
+      </if>
+      <if test="postalcode != null">
+        postalcode,
+      </if>
+      <if test="totalassets != null">
+        totalassets,
+      </if>
+      <if test="enterprisefax != null">
+        enterprisefax,
+      </if>
+      <if test="legarname != null">
+        legarname,
+      </if>
+      <if test="legaridentitycode != null">
+        legaridentitycode,
+      </if>
+      <if test="registerenterprise != null">
+        registerenterprise,
+      </if>
+      <if test="saleprise != null">
+        saleprise,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="companyName != null">
+        #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="licence != null">
+        #{licence,jdbcType=VARCHAR},
+      </if>
+      <if test="companyStatus != null">
+        #{companyStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="licenceReturntime != null">
+        #{licenceReturntime,jdbcType=VARCHAR},
+      </if>
+      <if test="companyLink != null">
+        #{companyLink,jdbcType=VARCHAR},
+      </if>
+      <if test="companyPhone != null">
+        #{companyPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="scope != null">
+        #{scope,jdbcType=VARCHAR},
+      </if>
+      <if test="registeredAddress != null">
+        #{registeredAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="linkAddress != null">
+        #{linkAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="postalcode != null">
+        #{postalcode,jdbcType=VARCHAR},
+      </if>
+      <if test="totalassets != null">
+        #{totalassets,jdbcType=VARCHAR},
+      </if>
+      <if test="enterprisefax != null">
+        #{enterprisefax,jdbcType=VARCHAR},
+      </if>
+      <if test="legarname != null">
+        #{legarname,jdbcType=VARCHAR},
+      </if>
+      <if test="legaridentitycode != null">
+        #{legaridentitycode,jdbcType=VARCHAR},
+      </if>
+      <if test="registerenterprise != null">
+        #{registerenterprise,jdbcType=INTEGER},
+      </if>
+      <if test="saleprise != null">
+        #{saleprise,jdbcType=REAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.durgs.entity.supplier">
+    update supplier
+    <set>
+      <if test="companyName != null">
+        company_name = #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="licence != null">
+        licence = #{licence,jdbcType=VARCHAR},
+      </if>
+      <if test="companyStatus != null">
+        company_status = #{companyStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="licenceReturntime != null">
+        licence_returntime = #{licenceReturntime,jdbcType=VARCHAR},
+      </if>
+      <if test="companyLink != null">
+        company_link = #{companyLink,jdbcType=VARCHAR},
+      </if>
+      <if test="companyPhone != null">
+        company_phone = #{companyPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="scope != null">
+        scope = #{scope,jdbcType=VARCHAR},
+      </if>
+      <if test="registeredAddress != null">
+        registered_address = #{registeredAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="linkAddress != null">
+        link_address = #{linkAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="postalcode != null">
+        postalcode = #{postalcode,jdbcType=VARCHAR},
+      </if>
+      <if test="totalassets != null">
+        totalassets = #{totalassets,jdbcType=VARCHAR},
+      </if>
+      <if test="enterprisefax != null">
+        enterprisefax = #{enterprisefax,jdbcType=VARCHAR},
+      </if>
+      <if test="legarname != null">
+        legarname = #{legarname,jdbcType=VARCHAR},
+      </if>
+      <if test="legaridentitycode != null">
+        legaridentitycode = #{legaridentitycode,jdbcType=VARCHAR},
+      </if>
+      <if test="registerenterprise != null">
+        registerenterprise = #{registerenterprise,jdbcType=INTEGER},
+      </if>
+      <if test="saleprise != null">
+        saleprise = #{saleprise,jdbcType=REAL},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.durgs.entity.supplier">
+    update supplier
+    set company_name = #{companyName,jdbcType=VARCHAR},
+      licence = #{licence,jdbcType=VARCHAR},
+      company_status = #{companyStatus,jdbcType=VARCHAR},
+      licence_returntime = #{licenceReturntime,jdbcType=VARCHAR},
+      company_link = #{companyLink,jdbcType=VARCHAR},
+      company_phone = #{companyPhone,jdbcType=VARCHAR},
+      scope = #{scope,jdbcType=VARCHAR},
+      registered_address = #{registeredAddress,jdbcType=VARCHAR},
+      link_address = #{linkAddress,jdbcType=VARCHAR},
+      postalcode = #{postalcode,jdbcType=VARCHAR},
+      totalassets = #{totalassets,jdbcType=VARCHAR},
+      enterprisefax = #{enterprisefax,jdbcType=VARCHAR},
+      legarname = #{legarname,jdbcType=VARCHAR},
+      legaridentitycode = #{legaridentitycode,jdbcType=VARCHAR},
+      registerenterprise = #{registerenterprise,jdbcType=INTEGER},
+      saleprise = #{saleprise,jdbcType=REAL}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

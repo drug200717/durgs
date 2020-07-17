@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.durgs.dao.drugsMapper">
+  <resultMap id="BaseResultMap" type="com.durgs.entity.drugs">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="serial_number" jdbcType="VARCHAR" property="serialNumber" />
+    <result column="common_name" jdbcType="VARCHAR" property="commonName" />
+    <result column="dosage_form" jdbcType="VARCHAR" property="dosageForm" />
+    <result column="specification" jdbcType="VARCHAR" property="specification" />
+    <result column="conversion_coefficient" jdbcType="VARCHAR" property="conversionCoefficient" />
+    <result column="manufacturing_name" jdbcType="VARCHAR" property="manufacturingName" />
+    <result column="trade_name" jdbcType="VARCHAR" property="tradeName" />
+    <result column="bid_price" jdbcType="REAL" property="bidPrice" />
+    <result column="company" jdbcType="VARCHAR" property="company" />
+    <result column="common_pinyin" jdbcType="VARCHAR" property="commonPinyin" />
+    <result column="photos" jdbcType="VARCHAR" property="photos" />
+    <result column="approval_number" jdbcType="VARCHAR" property="approvalNumber" />
+    <result column="approval_time" jdbcType="VARCHAR" property="approvalTime" />
+    <result column="imported" jdbcType="VARCHAR" property="imported" />
+    <result column="packing_material" jdbcType="VARCHAR" property="packingMaterial" />
+    <result column="packing_company" jdbcType="VARCHAR" property="packingCompany" />
+    <result column="latest_price" jdbcType="REAL" property="latestPrice" />
+    <result column="latest_price_source" jdbcType="VARCHAR" property="latestPriceSource" />
+    <result column="quality_id" jdbcType="INTEGER" property="qualityId" />
+    <result column="quality_description" jdbcType="VARCHAR" property="qualityDescription" />
+    <result column="inspection" jdbcType="VARCHAR" property="inspection" />
+    <result column="inspection_no" jdbcType="VARCHAR" property="inspectionNo" />
+    <result column="inspection_validity" jdbcType="VARCHAR" property="inspectionValidity" />
+    <result column="product_description" jdbcType="VARCHAR" property="productDescription" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="transaction_status" jdbcType="VARCHAR" property="transactionStatus" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, serial_number, common_name, dosage_form, specification, conversion_coefficient, 
+    manufacturing_name, trade_name, bid_price, company, common_pinyin, photos, approval_number, 
+    approval_time, imported, packing_material, packing_company, latest_price, latest_price_source, 
+    quality_id, quality_description, inspection, inspection_no, inspection_validity, 
+    product_description, type, transaction_status
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from drugs
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from drugs
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.durgs.entity.drugs">
+    insert into drugs (id, serial_number, common_name, 
+      dosage_form, specification, conversion_coefficient, 
+      manufacturing_name, trade_name, bid_price, 
+      company, common_pinyin, photos, 
+      approval_number, approval_time, imported, 
+      packing_material, packing_company, latest_price, 
+      latest_price_source, quality_id, quality_description, 
+      inspection, inspection_no, inspection_validity, 
+      product_description, type, transaction_status
+      )
+    values (#{id,jdbcType=INTEGER}, #{serialNumber,jdbcType=VARCHAR}, #{commonName,jdbcType=VARCHAR}, 
+      #{dosageForm,jdbcType=VARCHAR}, #{specification,jdbcType=VARCHAR}, #{conversionCoefficient,jdbcType=VARCHAR}, 
+      #{manufacturingName,jdbcType=VARCHAR}, #{tradeName,jdbcType=VARCHAR}, #{bidPrice,jdbcType=REAL}, 
+      #{company,jdbcType=VARCHAR}, #{commonPinyin,jdbcType=VARCHAR}, #{photos,jdbcType=VARCHAR}, 
+      #{approvalNumber,jdbcType=VARCHAR}, #{approvalTime,jdbcType=VARCHAR}, #{imported,jdbcType=VARCHAR}, 
+      #{packingMaterial,jdbcType=VARCHAR}, #{packingCompany,jdbcType=VARCHAR}, #{latestPrice,jdbcType=REAL}, 
+      #{latestPriceSource,jdbcType=VARCHAR}, #{qualityId,jdbcType=INTEGER}, #{qualityDescription,jdbcType=VARCHAR}, 
+      #{inspection,jdbcType=VARCHAR}, #{inspectionNo,jdbcType=VARCHAR}, #{inspectionValidity,jdbcType=VARCHAR}, 
+      #{productDescription,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{transactionStatus,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.durgs.entity.drugs">
+    insert into drugs
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="serialNumber != null">
+        serial_number,
+      </if>
+      <if test="commonName != null">
+        common_name,
+      </if>
+      <if test="dosageForm != null">
+        dosage_form,
+      </if>
+      <if test="specification != null">
+        specification,
+      </if>
+      <if test="conversionCoefficient != null">
+        conversion_coefficient,
+      </if>
+      <if test="manufacturingName != null">
+        manufacturing_name,
+      </if>
+      <if test="tradeName != null">
+        trade_name,
+      </if>
+      <if test="bidPrice != null">
+        bid_price,
+      </if>
+      <if test="company != null">
+        company,
+      </if>
+      <if test="commonPinyin != null">
+        common_pinyin,
+      </if>
+      <if test="photos != null">
+        photos,
+      </if>
+      <if test="approvalNumber != null">
+        approval_number,
+      </if>
+      <if test="approvalTime != null">
+        approval_time,
+      </if>
+      <if test="imported != null">
+        imported,
+      </if>
+      <if test="packingMaterial != null">
+        packing_material,
+      </if>
+      <if test="packingCompany != null">
+        packing_company,
+      </if>
+      <if test="latestPrice != null">
+        latest_price,
+      </if>
+      <if test="latestPriceSource != null">
+        latest_price_source,
+      </if>
+      <if test="qualityId != null">
+        quality_id,
+      </if>
+      <if test="qualityDescription != null">
+        quality_description,
+      </if>
+      <if test="inspection != null">
+        inspection,
+      </if>
+      <if test="inspectionNo != null">
+        inspection_no,
+      </if>
+      <if test="inspectionValidity != null">
+        inspection_validity,
+      </if>
+      <if test="productDescription != null">
+        product_description,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="transactionStatus != null">
+        transaction_status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="serialNumber != null">
+        #{serialNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="commonName != null">
+        #{commonName,jdbcType=VARCHAR},
+      </if>
+      <if test="dosageForm != null">
+        #{dosageForm,jdbcType=VARCHAR},
+      </if>
+      <if test="specification != null">
+        #{specification,jdbcType=VARCHAR},
+      </if>
+      <if test="conversionCoefficient != null">
+        #{conversionCoefficient,jdbcType=VARCHAR},
+      </if>
+      <if test="manufacturingName != null">
+        #{manufacturingName,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeName != null">
+        #{tradeName,jdbcType=VARCHAR},
+      </if>
+      <if test="bidPrice != null">
+        #{bidPrice,jdbcType=REAL},
+      </if>
+      <if test="company != null">
+        #{company,jdbcType=VARCHAR},
+      </if>
+      <if test="commonPinyin != null">
+        #{commonPinyin,jdbcType=VARCHAR},
+      </if>
+      <if test="photos != null">
+        #{photos,jdbcType=VARCHAR},
+      </if>
+      <if test="approvalNumber != null">
+        #{approvalNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="approvalTime != null">
+        #{approvalTime,jdbcType=VARCHAR},
+      </if>
+      <if test="imported != null">
+        #{imported,jdbcType=VARCHAR},
+      </if>
+      <if test="packingMaterial != null">
+        #{packingMaterial,jdbcType=VARCHAR},
+      </if>
+      <if test="packingCompany != null">
+        #{packingCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="latestPrice != null">
+        #{latestPrice,jdbcType=REAL},
+      </if>
+      <if test="latestPriceSource != null">
+        #{latestPriceSource,jdbcType=VARCHAR},
+      </if>
+      <if test="qualityId != null">
+        #{qualityId,jdbcType=INTEGER},
+      </if>
+      <if test="qualityDescription != null">
+        #{qualityDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="inspection != null">
+        #{inspection,jdbcType=VARCHAR},
+      </if>
+      <if test="inspectionNo != null">
+        #{inspectionNo,jdbcType=VARCHAR},
+      </if>
+      <if test="inspectionValidity != null">
+        #{inspectionValidity,jdbcType=VARCHAR},
+      </if>
+      <if test="productDescription != null">
+        #{productDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="transactionStatus != null">
+        #{transactionStatus,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.durgs.entity.drugs">
+    update drugs
+    <set>
+      <if test="serialNumber != null">
+        serial_number = #{serialNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="commonName != null">
+        common_name = #{commonName,jdbcType=VARCHAR},
+      </if>
+      <if test="dosageForm != null">
+        dosage_form = #{dosageForm,jdbcType=VARCHAR},
+      </if>
+      <if test="specification != null">
+        specification = #{specification,jdbcType=VARCHAR},
+      </if>
+      <if test="conversionCoefficient != null">
+        conversion_coefficient = #{conversionCoefficient,jdbcType=VARCHAR},
+      </if>
+      <if test="manufacturingName != null">
+        manufacturing_name = #{manufacturingName,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeName != null">
+        trade_name = #{tradeName,jdbcType=VARCHAR},
+      </if>
+      <if test="bidPrice != null">
+        bid_price = #{bidPrice,jdbcType=REAL},
+      </if>
+      <if test="company != null">
+        company = #{company,jdbcType=VARCHAR},
+      </if>
+      <if test="commonPinyin != null">
+        common_pinyin = #{commonPinyin,jdbcType=VARCHAR},
+      </if>
+      <if test="photos != null">
+        photos = #{photos,jdbcType=VARCHAR},
+      </if>
+      <if test="approvalNumber != null">
+        approval_number = #{approvalNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="approvalTime != null">
+        approval_time = #{approvalTime,jdbcType=VARCHAR},
+      </if>
+      <if test="imported != null">
+        imported = #{imported,jdbcType=VARCHAR},
+      </if>
+      <if test="packingMaterial != null">
+        packing_material = #{packingMaterial,jdbcType=VARCHAR},
+      </if>
+      <if test="packingCompany != null">
+        packing_company = #{packingCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="latestPrice != null">
+        latest_price = #{latestPrice,jdbcType=REAL},
+      </if>
+      <if test="latestPriceSource != null">
+        latest_price_source = #{latestPriceSource,jdbcType=VARCHAR},
+      </if>
+      <if test="qualityId != null">
+        quality_id = #{qualityId,jdbcType=INTEGER},
+      </if>
+      <if test="qualityDescription != null">
+        quality_description = #{qualityDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="inspection != null">
+        inspection = #{inspection,jdbcType=VARCHAR},
+      </if>
+      <if test="inspectionNo != null">
+        inspection_no = #{inspectionNo,jdbcType=VARCHAR},
+      </if>
+      <if test="inspectionValidity != null">
+        inspection_validity = #{inspectionValidity,jdbcType=VARCHAR},
+      </if>
+      <if test="productDescription != null">
+        product_description = #{productDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="transactionStatus != null">
+        transaction_status = #{transactionStatus,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.durgs.entity.drugs">
+    update drugs
+    set serial_number = #{serialNumber,jdbcType=VARCHAR},
+      common_name = #{commonName,jdbcType=VARCHAR},
+      dosage_form = #{dosageForm,jdbcType=VARCHAR},
+      specification = #{specification,jdbcType=VARCHAR},
+      conversion_coefficient = #{conversionCoefficient,jdbcType=VARCHAR},
+      manufacturing_name = #{manufacturingName,jdbcType=VARCHAR},
+      trade_name = #{tradeName,jdbcType=VARCHAR},
+      bid_price = #{bidPrice,jdbcType=REAL},
+      company = #{company,jdbcType=VARCHAR},
+      common_pinyin = #{commonPinyin,jdbcType=VARCHAR},
+      photos = #{photos,jdbcType=VARCHAR},
+      approval_number = #{approvalNumber,jdbcType=VARCHAR},
+      approval_time = #{approvalTime,jdbcType=VARCHAR},
+      imported = #{imported,jdbcType=VARCHAR},
+      packing_material = #{packingMaterial,jdbcType=VARCHAR},
+      packing_company = #{packingCompany,jdbcType=VARCHAR},
+      latest_price = #{latestPrice,jdbcType=REAL},
+      latest_price_source = #{latestPriceSource,jdbcType=VARCHAR},
+      quality_id = #{qualityId,jdbcType=INTEGER},
+      quality_description = #{qualityDescription,jdbcType=VARCHAR},
+      inspection = #{inspection,jdbcType=VARCHAR},
+      inspection_no = #{inspectionNo,jdbcType=VARCHAR},
+      inspection_validity = #{inspectionValidity,jdbcType=VARCHAR},
+      product_description = #{productDescription,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR},
+      transaction_status = #{transactionStatus,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

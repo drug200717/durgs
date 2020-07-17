@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.durgs.dao.supervisoryMapper">
+  <resultMap id="BaseResultMap" type="com.durgs.entity.supervisory">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="supervisorybody" jdbcType="VARCHAR" property="supervisorybody" />
+    <result column="link_address" jdbcType="VARCHAR" property="linkAddress" />
+    <result column="postalcode" jdbcType="VARCHAR" property="postalcode" />
+    <result column="link" jdbcType="VARCHAR" property="link" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="fax" jdbcType="VARCHAR" property="fax" />
+    <result column="mailbox" jdbcType="VARCHAR" property="mailbox" />
+    <result column="website" jdbcType="VARCHAR" property="website" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, supervisorybody, link_address, postalcode, link, phone, fax, mailbox, website
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from supervisory
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from supervisory
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.durgs.entity.supervisory">
+    insert into supervisory (id, supervisorybody, link_address, 
+      postalcode, link, phone, 
+      fax, mailbox, website
+      )
+    values (#{id,jdbcType=INTEGER}, #{supervisorybody,jdbcType=VARCHAR}, #{linkAddress,jdbcType=VARCHAR}, 
+      #{postalcode,jdbcType=VARCHAR}, #{link,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{fax,jdbcType=VARCHAR}, #{mailbox,jdbcType=VARCHAR}, #{website,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.durgs.entity.supervisory">
+    insert into supervisory
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="supervisorybody != null">
+        supervisorybody,
+      </if>
+      <if test="linkAddress != null">
+        link_address,
+      </if>
+      <if test="postalcode != null">
+        postalcode,
+      </if>
+      <if test="link != null">
+        link,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="fax != null">
+        fax,
+      </if>
+      <if test="mailbox != null">
+        mailbox,
+      </if>
+      <if test="website != null">
+        website,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="supervisorybody != null">
+        #{supervisorybody,jdbcType=VARCHAR},
+      </if>
+      <if test="linkAddress != null">
+        #{linkAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="postalcode != null">
+        #{postalcode,jdbcType=VARCHAR},
+      </if>
+      <if test="link != null">
+        #{link,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="fax != null">
+        #{fax,jdbcType=VARCHAR},
+      </if>
+      <if test="mailbox != null">
+        #{mailbox,jdbcType=VARCHAR},
+      </if>
+      <if test="website != null">
+        #{website,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.durgs.entity.supervisory">
+    update supervisory
+    <set>
+      <if test="supervisorybody != null">
+        supervisorybody = #{supervisorybody,jdbcType=VARCHAR},
+      </if>
+      <if test="linkAddress != null">
+        link_address = #{linkAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="postalcode != null">
+        postalcode = #{postalcode,jdbcType=VARCHAR},
+      </if>
+      <if test="link != null">
+        link = #{link,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="fax != null">
+        fax = #{fax,jdbcType=VARCHAR},
+      </if>
+      <if test="mailbox != null">
+        mailbox = #{mailbox,jdbcType=VARCHAR},
+      </if>
+      <if test="website != null">
+        website = #{website,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.durgs.entity.supervisory">
+    update supervisory
+    set supervisorybody = #{supervisorybody,jdbcType=VARCHAR},
+      link_address = #{linkAddress,jdbcType=VARCHAR},
+      postalcode = #{postalcode,jdbcType=VARCHAR},
+      link = #{link,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      fax = #{fax,jdbcType=VARCHAR},
+      mailbox = #{mailbox,jdbcType=VARCHAR},
+      website = #{website,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

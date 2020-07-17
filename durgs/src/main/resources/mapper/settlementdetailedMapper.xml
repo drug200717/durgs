@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.durgs.dao.settlementdetailedMapper">
+  <resultMap id="BaseResultMap" type="com.durgs.entity.settlementdetailed">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="purchase_id" jdbcType="INTEGER" property="purchaseId" />
+    <result column="drug_id" jdbcType="INTEGER" property="drugId" />
+    <result column="settlement_number" jdbcType="INTEGER" property="settlementNumber" />
+    <result column="settlement_price" jdbcType="REAL" property="settlementPrice" />
+    <result column="settlement_status" jdbcType="VARCHAR" property="settlementStatus" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, purchase_id, drug_id, settlement_number, settlement_price, settlement_status
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from settlementdetailed
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from settlementdetailed
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.durgs.entity.settlementdetailed">
+    insert into settlementdetailed (id, purchase_id, drug_id, 
+      settlement_number, settlement_price, settlement_status
+      )
+    values (#{id,jdbcType=INTEGER}, #{purchaseId,jdbcType=INTEGER}, #{drugId,jdbcType=INTEGER}, 
+      #{settlementNumber,jdbcType=INTEGER}, #{settlementPrice,jdbcType=REAL}, #{settlementStatus,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.durgs.entity.settlementdetailed">
+    insert into settlementdetailed
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="purchaseId != null">
+        purchase_id,
+      </if>
+      <if test="drugId != null">
+        drug_id,
+      </if>
+      <if test="settlementNumber != null">
+        settlement_number,
+      </if>
+      <if test="settlementPrice != null">
+        settlement_price,
+      </if>
+      <if test="settlementStatus != null">
+        settlement_status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="purchaseId != null">
+        #{purchaseId,jdbcType=INTEGER},
+      </if>
+      <if test="drugId != null">
+        #{drugId,jdbcType=INTEGER},
+      </if>
+      <if test="settlementNumber != null">
+        #{settlementNumber,jdbcType=INTEGER},
+      </if>
+      <if test="settlementPrice != null">
+        #{settlementPrice,jdbcType=REAL},
+      </if>
+      <if test="settlementStatus != null">
+        #{settlementStatus,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.durgs.entity.settlementdetailed">
+    update settlementdetailed
+    <set>
+      <if test="purchaseId != null">
+        purchase_id = #{purchaseId,jdbcType=INTEGER},
+      </if>
+      <if test="drugId != null">
+        drug_id = #{drugId,jdbcType=INTEGER},
+      </if>
+      <if test="settlementNumber != null">
+        settlement_number = #{settlementNumber,jdbcType=INTEGER},
+      </if>
+      <if test="settlementPrice != null">
+        settlement_price = #{settlementPrice,jdbcType=REAL},
+      </if>
+      <if test="settlementStatus != null">
+        settlement_status = #{settlementStatus,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.durgs.entity.settlementdetailed">
+    update settlementdetailed
+    set purchase_id = #{purchaseId,jdbcType=INTEGER},
+      drug_id = #{drugId,jdbcType=INTEGER},
+      settlement_number = #{settlementNumber,jdbcType=INTEGER},
+      settlement_price = #{settlementPrice,jdbcType=REAL},
+      settlement_status = #{settlementStatus,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

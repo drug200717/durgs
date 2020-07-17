@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.durgs.dao.HospitalMapper">
+  <resultMap id="BaseResultMap" type="com.durgs.entity.Hospital">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="hospital_name" jdbcType="VARCHAR" property="hospitalName" />
+    <result column="hospital_telephone" jdbcType="VARCHAR" property="hospitalTelephone" />
+    <result column="postal_code" jdbcType="VARCHAR" property="postalCode" />
+    <result column="region" jdbcType="VARCHAR" property="region" />
+    <result column="hospital_level" jdbcType="VARCHAR" property="hospitalLevel" />
+    <result column="bed_num" jdbcType="VARCHAR" property="bedNum" />
+    <result column="medical_institution" jdbcType="VARCHAR" property="medicalInstitution" />
+    <result column="hospital_office_telephone" jdbcType="VARCHAR" property="hospitalOfficeTelephone" />
+    <result column="hospital_office_fax" jdbcType="VARCHAR" property="hospitalOfficeFax" />
+    <result column="pharmacy_department_telephone" jdbcType="VARCHAR" property="pharmacyDepartmentTelephone" />
+    <result column="hospital_tyep" jdbcType="VARCHAR" property="hospitalTyep" />
+    <result column="drugs_income" jdbcType="VARCHAR" property="drugsIncome" />
+    <result column="business_income" jdbcType="VARCHAR" property="businessIncome" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, hospital_name, hospital_telephone, postal_code, region, hospital_level, bed_num, 
+    medical_institution, hospital_office_telephone, hospital_office_fax, pharmacy_department_telephone, 
+    hospital_tyep, drugs_income, business_income
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from hospital
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from hospital
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.durgs.entity.Hospital">
+    insert into hospital (id, hospital_name, hospital_telephone, 
+      postal_code, region, hospital_level, 
+      bed_num, medical_institution, hospital_office_telephone, 
+      hospital_office_fax, pharmacy_department_telephone, 
+      hospital_tyep, drugs_income, business_income
+      )
+    values (#{id,jdbcType=INTEGER}, #{hospitalName,jdbcType=VARCHAR}, #{hospitalTelephone,jdbcType=VARCHAR}, 
+      #{postalCode,jdbcType=VARCHAR}, #{region,jdbcType=VARCHAR}, #{hospitalLevel,jdbcType=VARCHAR}, 
+      #{bedNum,jdbcType=VARCHAR}, #{medicalInstitution,jdbcType=VARCHAR}, #{hospitalOfficeTelephone,jdbcType=VARCHAR}, 
+      #{hospitalOfficeFax,jdbcType=VARCHAR}, #{pharmacyDepartmentTelephone,jdbcType=VARCHAR}, 
+      #{hospitalTyep,jdbcType=VARCHAR}, #{drugsIncome,jdbcType=VARCHAR}, #{businessIncome,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.durgs.entity.Hospital">
+    insert into hospital
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="hospitalName != null">
+        hospital_name,
+      </if>
+      <if test="hospitalTelephone != null">
+        hospital_telephone,
+      </if>
+      <if test="postalCode != null">
+        postal_code,
+      </if>
+      <if test="region != null">
+        region,
+      </if>
+      <if test="hospitalLevel != null">
+        hospital_level,
+      </if>
+      <if test="bedNum != null">
+        bed_num,
+      </if>
+      <if test="medicalInstitution != null">
+        medical_institution,
+      </if>
+      <if test="hospitalOfficeTelephone != null">
+        hospital_office_telephone,
+      </if>
+      <if test="hospitalOfficeFax != null">
+        hospital_office_fax,
+      </if>
+      <if test="pharmacyDepartmentTelephone != null">
+        pharmacy_department_telephone,
+      </if>
+      <if test="hospitalTyep != null">
+        hospital_tyep,
+      </if>
+      <if test="drugsIncome != null">
+        drugs_income,
+      </if>
+      <if test="businessIncome != null">
+        business_income,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="hospitalName != null">
+        #{hospitalName,jdbcType=VARCHAR},
+      </if>
+      <if test="hospitalTelephone != null">
+        #{hospitalTelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="postalCode != null">
+        #{postalCode,jdbcType=VARCHAR},
+      </if>
+      <if test="region != null">
+        #{region,jdbcType=VARCHAR},
+      </if>
+      <if test="hospitalLevel != null">
+        #{hospitalLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="bedNum != null">
+        #{bedNum,jdbcType=VARCHAR},
+      </if>
+      <if test="medicalInstitution != null">
+        #{medicalInstitution,jdbcType=VARCHAR},
+      </if>
+      <if test="hospitalOfficeTelephone != null">
+        #{hospitalOfficeTelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="hospitalOfficeFax != null">
+        #{hospitalOfficeFax,jdbcType=VARCHAR},
+      </if>
+      <if test="pharmacyDepartmentTelephone != null">
+        #{pharmacyDepartmentTelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="hospitalTyep != null">
+        #{hospitalTyep,jdbcType=VARCHAR},
+      </if>
+      <if test="drugsIncome != null">
+        #{drugsIncome,jdbcType=VARCHAR},
+      </if>
+      <if test="businessIncome != null">
+        #{businessIncome,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.durgs.entity.Hospital">
+    update hospital
+    <set>
+      <if test="hospitalName != null">
+        hospital_name = #{hospitalName,jdbcType=VARCHAR},
+      </if>
+      <if test="hospitalTelephone != null">
+        hospital_telephone = #{hospitalTelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="postalCode != null">
+        postal_code = #{postalCode,jdbcType=VARCHAR},
+      </if>
+      <if test="region != null">
+        region = #{region,jdbcType=VARCHAR},
+      </if>
+      <if test="hospitalLevel != null">
+        hospital_level = #{hospitalLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="bedNum != null">
+        bed_num = #{bedNum,jdbcType=VARCHAR},
+      </if>
+      <if test="medicalInstitution != null">
+        medical_institution = #{medicalInstitution,jdbcType=VARCHAR},
+      </if>
+      <if test="hospitalOfficeTelephone != null">
+        hospital_office_telephone = #{hospitalOfficeTelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="hospitalOfficeFax != null">
+        hospital_office_fax = #{hospitalOfficeFax,jdbcType=VARCHAR},
+      </if>
+      <if test="pharmacyDepartmentTelephone != null">
+        pharmacy_department_telephone = #{pharmacyDepartmentTelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="hospitalTyep != null">
+        hospital_tyep = #{hospitalTyep,jdbcType=VARCHAR},
+      </if>
+      <if test="drugsIncome != null">
+        drugs_income = #{drugsIncome,jdbcType=VARCHAR},
+      </if>
+      <if test="businessIncome != null">
+        business_income = #{businessIncome,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.durgs.entity.Hospital">
+    update hospital
+    set hospital_name = #{hospitalName,jdbcType=VARCHAR},
+      hospital_telephone = #{hospitalTelephone,jdbcType=VARCHAR},
+      postal_code = #{postalCode,jdbcType=VARCHAR},
+      region = #{region,jdbcType=VARCHAR},
+      hospital_level = #{hospitalLevel,jdbcType=VARCHAR},
+      bed_num = #{bedNum,jdbcType=VARCHAR},
+      medical_institution = #{medicalInstitution,jdbcType=VARCHAR},
+      hospital_office_telephone = #{hospitalOfficeTelephone,jdbcType=VARCHAR},
+      hospital_office_fax = #{hospitalOfficeFax,jdbcType=VARCHAR},
+      pharmacy_department_telephone = #{pharmacyDepartmentTelephone,jdbcType=VARCHAR},
+      hospital_tyep = #{hospitalTyep,jdbcType=VARCHAR},
+      drugs_income = #{drugsIncome,jdbcType=VARCHAR},
+      business_income = #{businessIncome,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

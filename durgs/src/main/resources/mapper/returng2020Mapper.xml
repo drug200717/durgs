@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.durgs.dao.returng2020Mapper">
+  <resultMap id="BaseResultMap" type="com.durgs.entity.returng2020">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="purchase_id" jdbcType="INTEGER" property="purchaseId" />
+    <result column="drug_id" jdbcType="INTEGER" property="drugId" />
+    <result column="returng_id" jdbcType="INTEGER" property="returngId" />
+    <result column="returng_no" jdbcType="INTEGER" property="returngNo" />
+    <result column="returng_price" jdbcType="REAL" property="returngPrice" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, purchase_id, drug_id, returng_id, returng_no, returng_price, status
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from returng2020
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from returng2020
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.durgs.entity.returng2020">
+    insert into returng2020 (id, purchase_id, drug_id, 
+      returng_id, returng_no, returng_price, 
+      status)
+    values (#{id,jdbcType=INTEGER}, #{purchaseId,jdbcType=INTEGER}, #{drugId,jdbcType=INTEGER}, 
+      #{returngId,jdbcType=INTEGER}, #{returngNo,jdbcType=INTEGER}, #{returngPrice,jdbcType=REAL}, 
+      #{status,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.durgs.entity.returng2020">
+    insert into returng2020
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="purchaseId != null">
+        purchase_id,
+      </if>
+      <if test="drugId != null">
+        drug_id,
+      </if>
+      <if test="returngId != null">
+        returng_id,
+      </if>
+      <if test="returngNo != null">
+        returng_no,
+      </if>
+      <if test="returngPrice != null">
+        returng_price,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="purchaseId != null">
+        #{purchaseId,jdbcType=INTEGER},
+      </if>
+      <if test="drugId != null">
+        #{drugId,jdbcType=INTEGER},
+      </if>
+      <if test="returngId != null">
+        #{returngId,jdbcType=INTEGER},
+      </if>
+      <if test="returngNo != null">
+        #{returngNo,jdbcType=INTEGER},
+      </if>
+      <if test="returngPrice != null">
+        #{returngPrice,jdbcType=REAL},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.durgs.entity.returng2020">
+    update returng2020
+    <set>
+      <if test="purchaseId != null">
+        purchase_id = #{purchaseId,jdbcType=INTEGER},
+      </if>
+      <if test="drugId != null">
+        drug_id = #{drugId,jdbcType=INTEGER},
+      </if>
+      <if test="returngId != null">
+        returng_id = #{returngId,jdbcType=INTEGER},
+      </if>
+      <if test="returngNo != null">
+        returng_no = #{returngNo,jdbcType=INTEGER},
+      </if>
+      <if test="returngPrice != null">
+        returng_price = #{returngPrice,jdbcType=REAL},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.durgs.entity.returng2020">
+    update returng2020
+    set purchase_id = #{purchaseId,jdbcType=INTEGER},
+      drug_id = #{drugId,jdbcType=INTEGER},
+      returng_id = #{returngId,jdbcType=INTEGER},
+      returng_no = #{returngNo,jdbcType=INTEGER},
+      returng_price = #{returngPrice,jdbcType=REAL},
+      status = #{status,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

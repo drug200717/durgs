@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.durgs.dao.hpurchaseMapper">
+  <resultMap id="BaseResultMap" type="com.durgs.entity.hpurchase">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="purchase_id" jdbcType="INTEGER" property="purchaseId" />
+    <result column="purchase_name" jdbcType="VARCHAR" property="purchaseName" />
+    <result column="link" jdbcType="VARCHAR" property="link" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="submission_time" jdbcType="VARCHAR" property="submissionTime" />
+    <result column="remarks" jdbcType="VARCHAR" property="remarks" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="reviewer" jdbcType="VARCHAR" property="reviewer" />
+    <result column="reviewer_audit" jdbcType="VARCHAR" property="reviewerAudit" />
+    <result column="reviewer_time" jdbcType="VARCHAR" property="reviewerTime" />
+    <result column="create_time" jdbcType="VARCHAR" property="createTime" />
+    <result column="update_time" jdbcType="VARCHAR" property="updateTime" />
+    <result column="is_delete" jdbcType="VARCHAR" property="isDelete" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, purchase_id, purchase_name, link, phone, submission_time, remarks, status, reviewer, 
+    reviewer_audit, reviewer_time, create_time, update_time, is_delete
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from hpurchase
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from hpurchase
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.durgs.entity.hpurchase">
+    insert into hpurchase (id, purchase_id, purchase_name, 
+      link, phone, submission_time, 
+      remarks, status, reviewer, 
+      reviewer_audit, reviewer_time, create_time, 
+      update_time, is_delete)
+    values (#{id,jdbcType=INTEGER}, #{purchaseId,jdbcType=INTEGER}, #{purchaseName,jdbcType=VARCHAR}, 
+      #{link,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{submissionTime,jdbcType=VARCHAR}, 
+      #{remarks,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{reviewer,jdbcType=VARCHAR}, 
+      #{reviewerAudit,jdbcType=VARCHAR}, #{reviewerTime,jdbcType=VARCHAR}, #{createTime,jdbcType=VARCHAR}, 
+      #{updateTime,jdbcType=VARCHAR}, #{isDelete,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.durgs.entity.hpurchase">
+    insert into hpurchase
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="purchaseId != null">
+        purchase_id,
+      </if>
+      <if test="purchaseName != null">
+        purchase_name,
+      </if>
+      <if test="link != null">
+        link,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="submissionTime != null">
+        submission_time,
+      </if>
+      <if test="remarks != null">
+        remarks,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="reviewer != null">
+        reviewer,
+      </if>
+      <if test="reviewerAudit != null">
+        reviewer_audit,
+      </if>
+      <if test="reviewerTime != null">
+        reviewer_time,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="isDelete != null">
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="purchaseId != null">
+        #{purchaseId,jdbcType=INTEGER},
+      </if>
+      <if test="purchaseName != null">
+        #{purchaseName,jdbcType=VARCHAR},
+      </if>
+      <if test="link != null">
+        #{link,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="submissionTime != null">
+        #{submissionTime,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null">
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="reviewer != null">
+        #{reviewer,jdbcType=VARCHAR},
+      </if>
+      <if test="reviewerAudit != null">
+        #{reviewerAudit,jdbcType=VARCHAR},
+      </if>
+      <if test="reviewerTime != null">
+        #{reviewerTime,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null">
+        #{isDelete,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.durgs.entity.hpurchase">
+    update hpurchase
+    <set>
+      <if test="purchaseId != null">
+        purchase_id = #{purchaseId,jdbcType=INTEGER},
+      </if>
+      <if test="purchaseName != null">
+        purchase_name = #{purchaseName,jdbcType=VARCHAR},
+      </if>
+      <if test="link != null">
+        link = #{link,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="submissionTime != null">
+        submission_time = #{submissionTime,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null">
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="reviewer != null">
+        reviewer = #{reviewer,jdbcType=VARCHAR},
+      </if>
+      <if test="reviewerAudit != null">
+        reviewer_audit = #{reviewerAudit,jdbcType=VARCHAR},
+      </if>
+      <if test="reviewerTime != null">
+        reviewer_time = #{reviewerTime,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null">
+        is_delete = #{isDelete,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.durgs.entity.hpurchase">
+    update hpurchase
+    set purchase_id = #{purchaseId,jdbcType=INTEGER},
+      purchase_name = #{purchaseName,jdbcType=VARCHAR},
+      link = #{link,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      submission_time = #{submissionTime,jdbcType=VARCHAR},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      reviewer = #{reviewer,jdbcType=VARCHAR},
+      reviewer_audit = #{reviewerAudit,jdbcType=VARCHAR},
+      reviewer_time = #{reviewerTime,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=VARCHAR},
+      is_delete = #{isDelete,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

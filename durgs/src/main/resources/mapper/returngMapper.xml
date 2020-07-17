@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.durgs.dao.returngMapper">
+  <resultMap id="BaseResultMap" type="com.durgs.entity.returng">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="returng_no" jdbcType="VARCHAR" property="returngNo" />
+    <result column="returng_name" jdbcType="VARCHAR" property="returngName" />
+    <result column="hospital_id" jdbcType="INTEGER" property="hospitalId" />
+    <result column="link" jdbcType="VARCHAR" property="link" />
+    <result column="link_phone" jdbcType="VARCHAR" property="linkPhone" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="create_time" jdbcType="VARCHAR" property="createTime" />
+    <result column="submission_time" jdbcType="VARCHAR" property="submissionTime" />
+    <result column="remarks" jdbcType="VARCHAR" property="remarks" />
+    <result column="returng_status" jdbcType="VARCHAR" property="returngStatus" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, returng_no, returng_name, hospital_id, link, link_phone, user_name, create_time, 
+    submission_time, remarks, returng_status
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from returng
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from returng
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.durgs.entity.returng">
+    insert into returng (id, returng_no, returng_name, 
+      hospital_id, link, link_phone, 
+      user_name, create_time, submission_time, 
+      remarks, returng_status)
+    values (#{id,jdbcType=INTEGER}, #{returngNo,jdbcType=VARCHAR}, #{returngName,jdbcType=VARCHAR}, 
+      #{hospitalId,jdbcType=INTEGER}, #{link,jdbcType=VARCHAR}, #{linkPhone,jdbcType=VARCHAR}, 
+      #{userName,jdbcType=VARCHAR}, #{createTime,jdbcType=VARCHAR}, #{submissionTime,jdbcType=VARCHAR}, 
+      #{remarks,jdbcType=VARCHAR}, #{returngStatus,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.durgs.entity.returng">
+    insert into returng
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="returngNo != null">
+        returng_no,
+      </if>
+      <if test="returngName != null">
+        returng_name,
+      </if>
+      <if test="hospitalId != null">
+        hospital_id,
+      </if>
+      <if test="link != null">
+        link,
+      </if>
+      <if test="linkPhone != null">
+        link_phone,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="submissionTime != null">
+        submission_time,
+      </if>
+      <if test="remarks != null">
+        remarks,
+      </if>
+      <if test="returngStatus != null">
+        returng_status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="returngNo != null">
+        #{returngNo,jdbcType=VARCHAR},
+      </if>
+      <if test="returngName != null">
+        #{returngName,jdbcType=VARCHAR},
+      </if>
+      <if test="hospitalId != null">
+        #{hospitalId,jdbcType=INTEGER},
+      </if>
+      <if test="link != null">
+        #{link,jdbcType=VARCHAR},
+      </if>
+      <if test="linkPhone != null">
+        #{linkPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="submissionTime != null">
+        #{submissionTime,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null">
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="returngStatus != null">
+        #{returngStatus,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.durgs.entity.returng">
+    update returng
+    <set>
+      <if test="returngNo != null">
+        returng_no = #{returngNo,jdbcType=VARCHAR},
+      </if>
+      <if test="returngName != null">
+        returng_name = #{returngName,jdbcType=VARCHAR},
+      </if>
+      <if test="hospitalId != null">
+        hospital_id = #{hospitalId,jdbcType=INTEGER},
+      </if>
+      <if test="link != null">
+        link = #{link,jdbcType=VARCHAR},
+      </if>
+      <if test="linkPhone != null">
+        link_phone = #{linkPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="submissionTime != null">
+        submission_time = #{submissionTime,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null">
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="returngStatus != null">
+        returng_status = #{returngStatus,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.durgs.entity.returng">
+    update returng
+    set returng_no = #{returngNo,jdbcType=VARCHAR},
+      returng_name = #{returngName,jdbcType=VARCHAR},
+      hospital_id = #{hospitalId,jdbcType=INTEGER},
+      link = #{link,jdbcType=VARCHAR},
+      link_phone = #{linkPhone,jdbcType=VARCHAR},
+      user_name = #{userName,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=VARCHAR},
+      submission_time = #{submissionTime,jdbcType=VARCHAR},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      returng_status = #{returngStatus,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
